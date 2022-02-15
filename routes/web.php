@@ -32,4 +32,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::post('/location', [LocationController::class, 'store'])->name('location');
+Route::post('/request', [RequestController::class, 'store'])->name('request');

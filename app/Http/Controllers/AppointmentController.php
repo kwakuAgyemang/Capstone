@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LocationController extends Controller
+class AppointmentController extends Controller
 {
     public function store(Request $request){
 
