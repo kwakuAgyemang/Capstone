@@ -23,13 +23,17 @@ class RegisterController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'location' => 'required|max:255',
+            'latitude' => 'required|max:255',
+            'longitude' => 'required|max:255',
             'password' => 'required|confirmed'
         ]);
         //store the user
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'user_role' => $request->user_role,
             'password' => Hash::make($request->password),
         ]);
         //sign in

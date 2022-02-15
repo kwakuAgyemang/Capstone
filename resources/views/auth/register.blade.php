@@ -94,7 +94,7 @@
 
 
     <div class="signup-form">
-        <form action="{{route('register')}}" method="post">
+        <form action="{{route('register')}}" class="myform" method="post">
             @csrf
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
@@ -116,14 +116,8 @@
                 </div>
                 @enderror
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control @error('location') border-warning @enderror" name="location" placeholder="Location" value="{{old('location')}}">
-                @error('location')
-                <div class="alert alert-danger alert-dismissible fade show mt-2">
-                    {{$message}}
-                </div>
-                @enderror
-            </div>
+            <input type="hidden" name="latitude">
+            <input type="hidden" name="longitude">
             <div class="form-group">
                 <input type="password" class="form-control @error('password') border-warning @enderror" name="password" placeholder="Password" >
                 @error('password')
@@ -146,8 +140,47 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
             </div>
+            <input type="hidden" name="user_role" value="1">
         </form>
         <div class="text-center">Already have an account? <a href="{{route('login')}}">Sign in</a></div>
     </div>
+    <script>
+
+
+
+        if('geolocation' in navigator){
+            console.log('geolocation available');
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position);
+                let latitude = position.coords.latitude;
+                let longitude = position.coords.longitude;
+                // $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor-false", function(data){
+                //     console.log(data);
+                // } )
+                // var img = new Image();
+                // img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + "," + position.coords.longitude + "&zoom=13&size=800x400&sensor=false";
+                // $('#output').html(img);
+                // let googleMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=11&size=400x400`;
+                // const mapImage = document.getElementById('mapImage');
+                // mapImage.src = googleMapURL;
+                document.querySelector('.myform input[name = "latitude"]').value = position.coords.latitude;
+                document.querySelector('.myform input[name = "longitude"]').value = position.coords.longitude;
+            });
+            function showError(error){
+                switch(error.code){
+                    case error.PERMISSION_DENIED:
+                        alert("You must Allow the Request for Geolocation");
+                        location.reload();
+                        break;
+                }
+            }
+
+        }
+        else{
+            console.log('geolocation not available');
+        };
+
+
+    </script>
 
 @endsection

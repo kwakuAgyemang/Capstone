@@ -12,6 +12,8 @@ class DashboardController extends Controller
     }
 
     public function index(){
+        //$arr_ip = geoip()->getLocaton($_SERVER['REMOTE_ADDR']);
+        //dd($arr_ip);
         return view('dashboard');
     }
 }
