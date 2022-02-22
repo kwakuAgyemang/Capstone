@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -25,7 +26,8 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255',
             'latitude' => 'required|max:255',
             'longitude' => 'required|max:255',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+            'user_role' => 'required'
         ]);
         //store the user
         User::create([
@@ -39,6 +41,8 @@ class RegisterController extends Controller
         //sign in
         auth()->attempt($request->only('email', 'password'));
         //redirecting
+        $data = DB::table('users')->where('user_role', 0)->get();
+        echo $data;
         return redirect()->route('dashboard');
     }
 }

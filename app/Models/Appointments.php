@@ -18,8 +18,12 @@ class Appointments extends Model
      */
     protected $fillable = [
         'date',
-        'user_id',
-        'landmark'
+        'collector_id',
+        'landmark',
+        'regularity',
+        'house_number',
+        'user_id'
+
     ];
 }
 //AIzaSyBmUioxG2m8Bm14O5opTZg9wmwWLsru6tU

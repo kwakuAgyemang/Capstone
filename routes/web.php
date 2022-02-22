@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LocationController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +32,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::post('/request', [RequestController::class, 'store'])->name('request');
+Route::post('/appointment', [AppointmentController::class, 'store'])->name('appointment');

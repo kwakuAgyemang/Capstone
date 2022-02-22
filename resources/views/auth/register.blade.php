@@ -127,6 +127,18 @@
                 @enderror
             </div>
             <div class="form-group">
+                <select class="form-select  @error('user_role') border-warning @enderror" name="user_role" id="">
+                    <option value="0">Collector</option>
+                    <option value="1">Customer</option>
+                </select>
+                @error('user_role')
+                <div class="alert alert-danger alert-dismissible fade show mt-2">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+
+            <div class="form-group">
                 <input type="password" class="form-control @error('password_confirmation') border-warning @enderror" name="password_confirmation" placeholder="Confirm Password" >
                 @error('password_confirmation')
                 <div class="alert alert-danger alert-dismissible fade show mt-2">
@@ -140,7 +152,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
             </div>
-            <input type="hidden" name="user_role" value="1">
+
         </form>
         <div class="text-center">Already have an account? <a href="{{route('login')}}">Sign in</a></div>
     </div>
@@ -154,15 +166,7 @@
                 console.log(position);
                 let latitude = position.coords.latitude;
                 let longitude = position.coords.longitude;
-                // $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor-false", function(data){
-                //     console.log(data);
-                // } )
-                // var img = new Image();
-                // img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + "," + position.coords.longitude + "&zoom=13&size=800x400&sensor=false";
-                // $('#output').html(img);
-                // let googleMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=11&size=400x400`;
-                // const mapImage = document.getElementById('mapImage');
-                // mapImage.src = googleMapURL;
+
                 document.querySelector('.myform input[name = "latitude"]').value = position.coords.latitude;
                 document.querySelector('.myform input[name = "longitude"]').value = position.coords.longitude;
             });

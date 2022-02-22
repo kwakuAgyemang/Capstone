@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,8 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('email', 'password'))) {
             return back()->with('status', 'Invalid login details');
         }
+        $data = DB::table('users')->where('user_role', 0)->get();
         //redirecting
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('data', $data);
     }
 }
