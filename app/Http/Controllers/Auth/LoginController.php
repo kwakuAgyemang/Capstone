@@ -28,8 +28,12 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('email', 'password'))) {
             return back()->with('status', 'Invalid login details');
         }
+        if(auth()->user()->user_role === 0){
+            return redirect()->route('collector');
+        }
         $data = DB::table('users')->where('user_role', 0)->get();
         //redirecting
-        return redirect()->route('dashboard')->with('data', $data);
+
+        return redirect()->route('dashboard');
     }
 }

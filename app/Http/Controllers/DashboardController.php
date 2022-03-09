@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Appointments;
 
 class DashboardController extends Controller
 {
@@ -12,8 +14,9 @@ class DashboardController extends Controller
     }
 
     public function index(){
-        //$arr_ip = geoip()->getLocaton($_SERVER['REMOTE_ADDR']);
-        //dd($arr_ip);
+
+        //$data = Appointments::where('user_id', auth()->user()->id)->with('user')->orderBy('created_at')->get();
+        //dd($data);
         return view('dashboard');
     }
 }

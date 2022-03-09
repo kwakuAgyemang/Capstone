@@ -118,14 +118,7 @@
             </div>
             <input type="hidden" name="latitude">
             <input type="hidden" name="longitude">
-            <div class="form-group">
-                <input type="password" class="form-control @error('password') border-warning @enderror" name="password" placeholder="Password" >
-                @error('password')
-                <div class="alert alert-danger alert-dismissible fade show mt-2">
-                    {{$message}}
-                </div>
-                @enderror
-            </div>
+
             <div class="form-group">
                 <select class="form-select  @error('user_role') border-warning @enderror" name="user_role" id="">
                     <option value="0">Collector</option>
@@ -137,6 +130,19 @@
                 </div>
                 @enderror
             </div>
+            <div class="form-group">
+                <div id="map" style="height: 500px; width: auto; margin: 0 auto;"></div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control @error('password') border-warning @enderror" name="password" placeholder="Password" >
+                @error('password')
+                <div class="alert alert-danger alert-dismissible fade show mt-2">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
+
 
             <div class="form-group">
                 <input type="password" class="form-control @error('password_confirmation') border-warning @enderror" name="password_confirmation" placeholder="Confirm Password" >
@@ -186,5 +192,6 @@
 
 
     </script>
+    <script src="{{asset('js/script.js')}}"></script>
 
 @endsection

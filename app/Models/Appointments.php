@@ -9,7 +9,7 @@ class Appointments extends Model
 {
     use HasFactory;
 
-    protected $table = 'apponintments';
+    protected $table = 'appointments';
 
     /**
      * The attributes that are mass assignable.
@@ -22,8 +22,13 @@ class Appointments extends Model
         'landmark',
         'regularity',
         'house_number',
-        'user_id'
+        'user_id',
+        'status'
 
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
 //AIzaSyBmUioxG2m8Bm14O5opTZg9wmwWLsru6tU

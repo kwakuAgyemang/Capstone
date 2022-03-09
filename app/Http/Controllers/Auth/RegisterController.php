@@ -42,7 +42,11 @@ class RegisterController extends Controller
         auth()->attempt($request->only('email', 'password'));
         //redirecting
         $data = DB::table('users')->where('user_role', 0)->get();
-        echo $data;
-        return redirect()->route('dashboard');
+        if($request->user_role == 0){
+            return redirect()->route('collector');
+        }
+        return redirect()->route('dashboard', [
+            'data' => $data
+        ]);
     }
 }
