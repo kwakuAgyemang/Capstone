@@ -20,7 +20,7 @@ class CollectorController extends Controller
         //dd($data);
         $date = Carbon::now();
         $data1 = Appointments::where('collector_id', auth()->user()->id)->where('date', $date->toDateString())->with('user')->get();
-        return view('collector', [
+        return view('dashboard.collector.home', [
             'data' => $data,
             'data1' => $data1
         ]);

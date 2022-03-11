@@ -15,11 +15,13 @@ class AppointmentController extends Controller
         $this->middleware(['auth']);
     }
     public function index(){
-        $data = DB::table('users')->where('user_role', 0)->get();
+        $data = DB::table('collectors')->get();
         return view('appointments', [
             'data' => $data
         ]);
     }
+
+
     public function store(Request $request){
         //dd($request);
         $this->validate($request, [

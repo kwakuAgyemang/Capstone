@@ -94,7 +94,7 @@
 
 
     <div class="signup-form">
-        <form action="{{route('login')}}" method="post">
+        <form action="{{route('user.login')}}" method="post">
             @csrf
             @if (session('status'))
             <div class="alert alert-danger alert-dismissible fade show mt-2">

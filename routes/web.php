@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CollectorController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,18 +24,48 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/register', [RegisterController::class, 'index'])->name('register');
+// Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store']);
+// Route::get('/login', [LoginController::class, 'index'])->name('login');
+// Route::post('/login', [LoginController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+//Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+//Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment');
-Route::post('/appointment', [AppointmentController::class, 'store']);
+//Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment');
+//Route::post('/appointment', [AppointmentController::class, 'store']);
 
-Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
+//Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
 
+Route::prefix('user')->name('user.')->group(function(){
+
+    Route::middleware(['guest', 'PreventBackHistory'])->group(function(){
+        Route::view('/login', 'dashboard.user.auth.login')->name('login');
+        Route::view('/register', 'dashboard.user.auth.register')->name('register');
+        Route::post('/register', [RegisterController::class, 'storeUser'])->name('create');
+        Route::post('/login', [LoginController::class, 'storeUser']);
+    });
+    Route::middleware(['auth', 'PreventBackHistory'])->group(function(){
+        Route::view('/home', 'dashboard.user.home')->name('home');
+        Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments');
+        Route::post('/appointment', [AppointmentController::class, 'store']);
+        Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+    });
+});
+
+Route::prefix('collector')->name('collector.')->group(function(){
+
+    Route::middleware(['guest:collector', 'PreventBackHistory'])->group(function(){
+        Route::view('/login', 'dashboard.collector.auth.login')->name('login');
+        Route::view('/register', 'dashboard.collector.auth.register')->name('register');
+        Route::post('/register', [RegisterController::class, 'storeCollector'])->name('create');
+        Route::post('/login', [LoginController::class, 'storeCollector']);
+    });
+
+    Route::middleware(['auth:collector', 'PreventBackHistory'])->group(function(){
+        Route::get('/home', [CollectorController::class, 'index'])->name('home');
+        Route::post('/logout', [LogoutController::class, 'storeCollector'])->name('logout');
+    });
+});

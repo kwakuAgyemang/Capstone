@@ -94,7 +94,7 @@
 
 
     <div class="signup-form">
-        <form action="{{route('register')}}" class="myform" method="post">
+        <form action="{{route('user.create')}}" class="myform" method="post">
             @csrf
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
@@ -119,17 +119,7 @@
             <input type="hidden" name="latitude">
             <input type="hidden" name="longitude">
 
-            <div class="form-group">
-                <select class="form-select  @error('user_role') border-warning @enderror" name="user_role" id="">
-                    <option value="0">Collector</option>
-                    <option value="1">Customer</option>
-                </select>
-                @error('user_role')
-                <div class="alert alert-danger alert-dismissible fade show mt-2">
-                    {{$message}}
-                </div>
-                @enderror
-            </div>
+
             <div class="form-group">
                 <div id="map" style="height: 500px; width: auto; margin: 0 auto;"></div>
             </div>
@@ -160,7 +150,7 @@
             </div>
 
         </form>
-        <div class="text-center">Already have an account? <a href="{{route('login')}}">Sign in</a></div>
+        <div class="text-center">Already have an account? <a href="{{route('user.login')}}">Sign in</a></div>
     </div>
     <script>
 

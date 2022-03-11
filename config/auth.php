@@ -17,6 +17,10 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+    'collector'=>[
+        'driver'=>'eloquent',
+        'model'=>App\Models\Collector::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +44,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'collector'=>[
+            'driver'=>'session',
+            'provider'=>'collectors'
+        ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -69,6 +78,10 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'collectors'=>[
+            'driver'=>'eloquent',
+            'model' => App\Models\Collector::class,
+        ],
     ],
 
     /*
@@ -93,6 +106,11 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'collectors'=>[
+            'driver' => 'eloquent',
+            'model' => App\Model\Collector::class,
+        ],
+
     ],
 
     /*

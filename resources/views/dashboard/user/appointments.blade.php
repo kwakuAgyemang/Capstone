@@ -11,7 +11,7 @@
 
                 <div class="panel-body">
                     <h1></h1>
-                    <form action="{{route('appointment')}}" method="post">
+                    <form action="{{route('user.appointments')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">Enter Date</label>

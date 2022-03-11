@@ -24,10 +24,10 @@
               @guest
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="{{route('user.register')}}">Register</a>
+                  <a class="nav-link" aria-current="page" href="{{route('collector.register')}}">Register</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{route('user.login')}}">Login</a>
+                  <a class="nav-link" href="{{route('collector.login')}}">Login</a>
                 </li>
 
               </ul>
@@ -35,13 +35,14 @@
               @auth
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <form action="{{route('user.logout')}}" method="post">
+                    <form action="{{route('collector.logout')}}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-danger">Logout</button>
                     </form>
                 </li>
               </ul>
               @endauth
+
 
 
           </div>

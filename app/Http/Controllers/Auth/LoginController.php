@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -18,22 +19,38 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function store(Request $request){
+    public function storeUser(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        //dd($request->only('email', 'password'));
+        $creds = $request->only('email', 'password');
+
+        if(!Auth::attempt($creds)) {
+            return back()->with('status', 'Invalid login details');
+        }
+
+
+        //redirecting
+
+        return redirect()->route('user.home');
+    }
+
+    public function storeCollector(Request $request){
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
         ]);
         //dd($request->only('email', 'password'));
 
-        if(!auth()->attempt($request->only('email', 'password'))) {
+        if(!Auth::guard('collector')->attempt($request->only('email', 'password'))) {
             return back()->with('status', 'Invalid login details');
         }
-        if(auth()->user()->user_role === 0){
-            return redirect()->route('collector');
-        }
-        $data = DB::table('users')->where('user_role', 0)->get();
+
+
         //redirecting
 
-        return redirect()->route('dashboard');
+        return redirect()->route('collector.home');
     }
 }

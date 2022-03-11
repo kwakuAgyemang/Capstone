@@ -15,4 +15,9 @@ class LogoutController extends Controller
         auth()->logout();
         return redirect()->route('home');
     }
+
+    public function storeCollector(){
+        Auth::guard('collector')->logout();
+        return redirect()->route('/');
+    }
 }
