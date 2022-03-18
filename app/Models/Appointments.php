@@ -30,5 +30,9 @@ class Appointments extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function collector(){
+        return $this->belongsTo(Collector::class);
+    }
 }
 //AIzaSyBmUioxG2m8Bm14O5opTZg9wmwWLsru6tU

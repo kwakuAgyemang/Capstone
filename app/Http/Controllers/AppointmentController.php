@@ -16,7 +16,7 @@ class AppointmentController extends Controller
     }
     public function index(){
         $data = DB::table('collectors')->get();
-        return view('appointments', [
+        return view('dashboard.user.appointments', [
             'data' => $data
         ]);
     }
@@ -47,7 +47,7 @@ class AppointmentController extends Controller
 
 
 
-        return redirect()->route('dashboard');
+        return redirect()->route('user.home');
     }
 
 

@@ -22,7 +22,7 @@
                         @foreach(auth()->user()->appointments as $app)
                         <tr>
                             <td>{{$app->date}}</td>
-                            <td>{{$app->user->name}}</td>
+                            <td>{{$app->collector->name}}</td>
                         </tr>
 
                         @endforeach
