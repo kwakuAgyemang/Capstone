@@ -15,6 +15,7 @@
                         <th scope="col">Landmark</th>
                         <th scope="col">Status</th>
                         <th scope="col">Complete</th>
+                        <th scope="col">Collectee Number</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,13 +24,8 @@
                         <td>{{$app->user->name}}</td>
                         <td>{{$app->landmark}}</td>
                         <td>{{$app->status}}</td>
-                        <td>
-                            <form action="">
-                                @csrf
-                                <button class="btn btn-success">Complete</button>
+                        <td>{{$app->user->phone_number}}</td>
 
-                            </form>
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -43,7 +39,8 @@
                         <th scope="col">Landmark</th>
                         <th scope="col">Regularity</th>
                         <th scope="col">Status</th>
-                        <th></th>
+                        <th scope="col">Collectee Number</th>
+
 
                     </tr>
                 </thead>
@@ -63,13 +60,8 @@
                                 @endif
                             </td>
                             <td>{{$app->status}}</td>
-                            <td>
-                                <form action="">
-                                    @csrf
-                                    <button class="btn btn-success">Complete</button>
+                            <td>{{$app->user->phone_number}}</td>
 
-                                </form>
-                            </td>
                         </tr>
 
                         @endforeach

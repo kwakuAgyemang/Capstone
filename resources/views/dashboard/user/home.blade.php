@@ -14,6 +14,9 @@
                     <tr>
                         <th scope="col">Date Set</th>
                         <th scope="col">Collector Selected</th>
+                        <th scope="col">Regularity</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Day of Week</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +26,16 @@
                         <tr>
                             <td>{{$app->date}}</td>
                             <td>{{$app->collector->name}}</td>
+                            <td>
+                                @if ($app->regularity == 2)
+                                    Weekly
+                                @elseif ($app->regularity == 1)
+                                    One time
+                                @endif
+
+                            </td>
+                            <td>{{$app->status}}</td>
+                            <td>{{$app->Day_of_week}}</td>
                         </tr>
 
                         @endforeach
@@ -33,6 +46,7 @@
 
 
         <a class="btn btn-success" href="{{route('user.appointments')}}" style="">Make an appointment</a>
+        <a class="btn btn-success" href="{{route('user.weeklyappointments')}}" style="">Make a weekly appointment</a>
     </div>
 
 

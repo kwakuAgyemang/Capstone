@@ -5,26 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appointments extends Model
+class WeeklyAppointment extends Model
 {
     use HasFactory;
 
-    protected $table = 'appointments';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'date',
-        'collector_id',
-        'landmark',
-        'regularity',
-        'house_number',
+        'day_of_week',
         'user_id',
+        'collector_id',
+        'house_number',
+        'landmark',
         'status',
-        'Day_of_week'
 
     ];
 
@@ -36,4 +27,3 @@ class Appointments extends Model
         return $this->belongsTo(Collector::class);
     }
 }
-//AIzaSyBmUioxG2m8Bm14O5opTZg9wmwWLsru6tU

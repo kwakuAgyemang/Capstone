@@ -51,6 +51,8 @@ Route::prefix('user')->name('user.')->group(function(){
         Route::view('/home', 'dashboard.user.home')->name('home');
         Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments');
         Route::post('/appointment', [AppointmentController::class, 'store']);
+        Route::get('/weeklyappointment', [WeeklyAppointmentController::class], 'index')->name('weeklyappointments');
+        Route::post('/weeklyappointment', [WeeklyAppointmentController::class], 'store');
         Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
     });
 });
