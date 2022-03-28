@@ -4,21 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class WeeklyMessage extends Command
+class DailyMessage extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'message:weekly';
+    protected $signature = 'message:daily';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Artisan comman to send weekly messages';
+    protected $description = 'Artisan comman to send daily messages';
 
     /**
      * Create a new command instance.
@@ -37,6 +37,6 @@ class WeeklyMessage extends Command
      */
     public function handle()
     {
-        echo 'Working';
+        \Log::info('Working');
     }
 }

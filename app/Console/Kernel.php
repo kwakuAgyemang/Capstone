@@ -7,6 +7,9 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+    protected $commands = [
+        Commands\DailyMessage::class,
+    ];
     /**
      * Define the application's command schedule.
      *
@@ -15,7 +18,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('message:weekly')->everyMinute()->appendOutputTo('schedule.log');
+        //$schedule->command('message:daily')->dailyAt('6:00')->appendOutputTo('schedule.log');
+        //$schedule->command('message:daily')->everyMinute();
     }
 
     /**
