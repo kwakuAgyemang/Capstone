@@ -9,6 +9,8 @@ class WeeklyAppointment extends Model
 {
     use HasFactory;
 
+    protected $table = 'weeklyappointments';
+
     protected $fillable = [
         'day_of_week',
         'user_id',

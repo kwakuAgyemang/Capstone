@@ -27,7 +27,6 @@ class AppointmentController extends Controller
         $this->validate($request, [
             'date' => 'required',
             'collector_id' => 'required',
-            'regularity' => 'required',
             'house_number' => 'required|max:255',
             'user_id' => 'required',
             'landmark' => 'required',
@@ -41,7 +40,6 @@ class AppointmentController extends Controller
         Appointments::create([
             'date' => $request->date,
             'collector_id' => $request->collector_id,
-            'regularity' => $request->regularity,
             'house_number' => $request->house_number,
             'user_id' => $request->user_id,
             'landmark' => $request->landmark,

@@ -6,16 +6,17 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    Add Collection Date
+                    Add Weekly Collection Date
                 </div>
 
                 <div class="panel-body">
                     <h1></h1>
-                    <form action="{{route('user.appointments')}}" method="post">
+                    <form action="{{route('weeklyappointments')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">Pick Day</label>
-                            <select name="day_of_week" id="">
+                            <select name="day_of_week" id="" >
+
                                 <option value="Monday">Monday</option>
                                 <option value="Tuesday">Tuesday</option>
                                 <option value="Wednesday">Wednesday</option>

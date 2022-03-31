@@ -8,7 +8,7 @@
 
     <div class="container">
 
-            <p class="lead">Current Packages</p>
+            <p class="lead">One time appointments</p>
             <table class="table table-responsive">
                 <thead>
                     <tr>
@@ -40,6 +40,30 @@
 
                         @endforeach
 
+
+                </tbody>
+            </table>
+
+            <p class="lead">Weekly Appointments</p>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">Day Set</th>
+                        <th scope="col">Collector Selected</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (auth()->user()->weeklyappointments !== null)
+                        @foreach(auth()->user()->weeklyappointments as $app)
+                        <tr>
+                            <td>{{$app->day_of_week}}</td>
+                            <td>{{$app->collector->name}}</td>
+                            <td>{{$app->status}}</td>
+                        </tr>
+
+                        @endforeach
+                    @endif
 
                 </tbody>
             </table>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\WeeklyAppointmentController;
 use App\Http\Controllers\CollectorController;
 use App\Http\Controllers\User\UserController;
 
@@ -24,20 +25,6 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-// Route::get('/register', [RegisterController::class, 'index'])->name('register');
-// Route::post('/register', [RegisterController::class, 'store']);
-
-// Route::get('/login', [LoginController::class, 'index'])->name('login');
-// Route::post('/login', [LoginController::class, 'store']);
-
-//Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-//Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
-
-//Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment');
-//Route::post('/appointment', [AppointmentController::class, 'store']);
-
-//Route::get('/collector', [CollectorController::class, 'index'])->name('collector');
 
 Route::prefix('user')->name('user.')->group(function(){
 
@@ -51,8 +38,8 @@ Route::prefix('user')->name('user.')->group(function(){
         Route::view('/home', 'dashboard.user.home')->name('home');
         Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments');
         Route::post('/appointment', [AppointmentController::class, 'store']);
-        Route::get('/weeklyappointment', [WeeklyAppointmentController::class], 'index')->name('weeklyappointments');
-        Route::post('/weeklyappointment', [WeeklyAppointmentController::class], 'store');
+        Route::get('/weeklyappointment', [WeeklyAppointmentController::class, 'index'])->name('weeklyappointments');
+        Route::post('/weeklyappointment', [WeeklyAppointmentController::class, 'store']);
         Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
     });
 });

@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Console\Commands;
-
+use DB;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
+use App\Models\Appointments;
+use App\Models\WeeklyAppointments;
 
 class DailyMessage extends Command
 {
@@ -38,5 +41,16 @@ class DailyMessage extends Command
     public function handle()
     {
         \Log::info('Working');
+    }
+
+    public function getOneTimeApp(){
+        $date = Carbon::now();
+        $appointments = Appointments::where('date', $date)->get();
+    }
+
+    public function getWeeklyApp(){
+        $date = Carbon::now();
+        $day = Carbon::createFromFormat('Y-m-d', $date)->format('l');
+        $appointments = WeeklyAppointments::where('Day_of_week', $day)->get();
     }
 }

@@ -7,15 +7,15 @@
     </div>
 
     <div class="container">
-            <p class="lead">Due Today</p>
+            <p class="lead">Weekly Appointments Due Today</p>
             <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">Collectee Name</th>
                         <th scope="col">Landmark</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Complete</th>
                         <th scope="col">Collectee Number</th>
+                        <th scope="col">Type</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,19 +25,23 @@
                         <td>{{$app->landmark}}</td>
                         <td>{{$app->status}}</td>
                         <td>{{$app->user->phone_number}}</td>
+                        <td>Weekly</td>
+
 
                     </tr>
+
                     @endforeach
                 </tbody>
             </table>
-            <p class="lead">Packages Due</p>
+
+
+            <p class="lead">One Time Appointments Due</p>
             <table class="table table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">Date Set</th>
                         <th scope="col">Collectee Name</th>
                         <th scope="col">Landmark</th>
-                        <th scope="col">Regularity</th>
                         <th scope="col">Status</th>
                         <th scope="col">Collectee Number</th>
 
@@ -52,13 +56,6 @@
                             <td>{{$app->date}}</td>
                             <td>{{$app->user->name}}</td>
                             <td>{{$app->landmark}}</td>
-                            <td>
-                                @if ($app->regularity === 1)
-                                Once
-                                @else
-                                    Weekly
-                                @endif
-                            </td>
                             <td>{{$app->status}}</td>
                             <td>{{$app->user->phone_number}}</td>
 
@@ -69,6 +66,8 @@
 
                 </tbody>
             </table>
+
+
 
 
     </div>

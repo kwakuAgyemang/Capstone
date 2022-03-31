@@ -24,11 +24,6 @@
                             @endforeach
 
                         </select>
-                        <label for="" class="mt-3">Do you want it just once or every week</label>
-                        <select name="regularity" class="form-select mt-1"  id="">
-                            <option value="1">Once</option>
-                            <option value="2">Weekly</option>
-                        </select>
 
                         <div class="form-group">
                             <input type="text" name="house_number" class="form-control mt-3" id="" placeholder="Please enter your house number">

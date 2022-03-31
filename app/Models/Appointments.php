@@ -20,7 +20,6 @@ class Appointments extends Model
         'date',
         'collector_id',
         'landmark',
-        'regularity',
         'house_number',
         'user_id',
         'status',

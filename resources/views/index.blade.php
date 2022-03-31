@@ -4,8 +4,8 @@
 
 
     <div class="container">
-        <a href="">Log In as a collector</a>
-        <a href="">Sign Up as a Collector</a>
+        <a href="{{route('collector.login')}}">Log In as a collector</a>
+        <a href="{{route('collector.register')}}">Sign Up as a Collector</a>
     </div>
 
 

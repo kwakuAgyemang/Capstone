@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\WeeklyAppointment;
+use DB;
 
 class WeeklyAppointmentController extends Controller
 {
@@ -28,12 +30,9 @@ class WeeklyAppointmentController extends Controller
             'landmark' => 'required',
         ]);
 
-        //dd($request->date);
-        //$day = Carbon::createFromFormat('Y-m-d', $request->day_of_week)->format('l');
 
-
-        //store the appointment
-        Appointments::create([
+        //store the weekly appointment
+        WeeklyAppointment::create([
             'day_of_week' => $request->day_of_week,
             'collector_id' => $request->collector_id,
             'house_number' => $request->house_number,
@@ -48,4 +47,8 @@ class WeeklyAppointmentController extends Controller
 
         return redirect()->route('user.home');
     }
+
+    // public function getToday(){
+
+    // }
 }

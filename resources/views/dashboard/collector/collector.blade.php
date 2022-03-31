@@ -15,7 +15,7 @@
                         <th scope="col">Landmark</th>
                         <th scope="col">Status</th>
                         <th scope="col">Collectee Number</th>
-                        <th scope="col">Complete</th>
+
                     </tr>
                 </thead>
                 <tbody>
