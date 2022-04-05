@@ -14,9 +14,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-          <a class="navbar-brand" href="{{route('home')}}">
+          <a class="navbar-brand" href="{{route('collector.home')}}">
             <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="36">
           </a>
+          <nav class="navbar">
+            <a href="{{route('collector.home')}}" class="nav-link">Home</a>
+            <a href="{{route('collector.allOne')}}" class="nav-link">One Time Appointments</a>
+            <a href="{{route('collector.allWeekly')}}" class="nav-link">Weekly Appointments</a>
+          </nav>
+
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

@@ -51,10 +51,13 @@ Route::prefix('collector')->name('collector.')->group(function(){
         Route::view('/register', 'dashboard.collector.auth.register')->name('register');
         Route::post('/register', [RegisterController::class, 'storeCollector'])->name('create');
         Route::post('/login', [LoginController::class, 'storeCollector']);
+
     });
 
     Route::middleware(['auth:collector', 'PreventBackHistory'])->group(function(){
         Route::get('/home', [CollectorController::class, 'index'])->name('home');
         Route::post('/logout', [LogoutController::class, 'storeCollector'])->name('logout');
+        Route::get('/allWeekly', [CollectorController::class, 'allWeekly'])->name('allWeekly');
+        Route::get('/alloneTime', [CollectorController::class, 'allOne'])->name('allOne');
     });
 });

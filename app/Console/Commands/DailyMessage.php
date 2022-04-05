@@ -53,4 +53,58 @@ class DailyMessage extends Command
         $day = Carbon::createFromFormat('Y-m-d', $date)->format('l');
         $appointments = WeeklyAppointments::where('Day_of_week', $day)->get();
     }
+
+
+    public function Arkesel(){
+        // SCHEDULE SMS
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://sms.arkesel.com/api/v2/sms/send',
+            CURLOPT_HTTPHEADER => ['api-key: cE9QRUkdjsjdfjkdsj9kdiieieififiw='],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => http_build_query([
+                'sender' => 'Helloworld',
+                'message' => 'Welcome to Arkesel SMS API v2. Please enjoy the experience.',
+                'recipients' => ['233542336719', '233268155768'],
+                'scheduled_date' => '2021-03-17 07:00 AM'
+            ]),
+        ]);
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
+
+        // $curl = curl_init();
+
+        // curl_setopt_array($curl, [
+        //     CURLOPT_URL => 'https://sms.arkesel.com/api/v2/sms/send',
+        //     CURLOPT_HTTPHEADER => ['api-key: cE9QRUkdjsjdfjkdsj9kdiieieififiw='],
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_ENCODING => '',
+        //     CURLOPT_MAXREDIRS => 10,
+        //     CURLOPT_TIMEOUT => 0,
+        //     CURLOPT_FOLLOWLOCATION => true,
+        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //     CURLOPT_CUSTOMREQUEST => 'POST',
+        //     CURLOPT_POSTFIELDS => http_build_query([
+        //         'sender' => 'Helloworld',
+        //         'message' => 'Welcome to Arkesel SMS API v2. Please enjoy the experience.',
+        //         'recipients' => ['233542336719', '233268155768']
+        //     ]),
+        // ]);
+
+        // $response = curl_exec($curl);
+
+        // curl_close($curl);
+        // echo $response;
+
+    }
 }

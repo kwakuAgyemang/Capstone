@@ -18,12 +18,12 @@ class Collector extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fname',
+        'lname',
         'email',
-        'longitude',
-        'latitude',
-        'vehicle_num',
         'password',
+        'vehicle_num',
+        'profile_pic'
     ];
 
     /**

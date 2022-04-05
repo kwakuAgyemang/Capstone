@@ -94,7 +94,7 @@
 
 
     <div class="signup-form">
-        <form action="{{route('collector.create')}}" class="myform" method="post">
+        <form action="{{route('collector.create')}}" class="myform" method="post" enctype="multipart/form-data">
             @csrf
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
@@ -124,8 +124,7 @@
                 </div>
                 @enderror
             </div>
-            <input type="hidden" name="latitude">
-            <input type="hidden" name="longitude">
+
 
 
 
@@ -148,6 +147,15 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="form-group">
+                <label for="">Profile Picture</label>
+                <input type="file" class="form-control-file" id="profile_pic" name="profile_pic">
+                <div class="image-preview" id="imagePreview">
+                    <span class="image-preview__default-text">Image Preview</span>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
             </div>

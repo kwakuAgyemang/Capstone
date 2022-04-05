@@ -61,5 +61,13 @@ class CollectorController extends Controller
         ]);
     }
 
+    public function allOne(){
+        //Getting all appointments of the collector
+        $oneTime = Appointments::where('collector_id', auth()->user()->id)->get();
+        return view('dashboard.collector.allone', [
+            'oneTime' => $oneTime
+        ]);
+    }
+
 
 }

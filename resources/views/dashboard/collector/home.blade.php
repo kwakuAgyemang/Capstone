@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.Capp')
 @section('content')
 
 <div class="jumbotron">
     <div class="container mt-5">
-        <h1 class="display-4">Welcome To Aboboya Express</h1>
+        <h1 class="display-4">Welcome {{auth()->user()->name}}</h1>
     </div>
 
     <div class="container">
-            <p class="lead">Weekly Appointments Due Today</p>
+            <p class="lead">Weekly Appointments Today</p>
             <table class="table table-responsive">
                 <thead>
                     <tr>
@@ -68,7 +68,8 @@
             </table>
 
 
-
+            <a href="{{route('collector.allWeekly')}}" class="btn btn-success">All Weekly Appointments</a>
+            <a href="{{route('collector.allOne')}}" class="btn btn-primary">All One Time Appointments</a>
 
     </div>
 

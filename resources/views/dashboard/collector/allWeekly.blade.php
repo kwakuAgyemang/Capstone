@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.Capp')
 @section('content')
 
 
@@ -9,7 +9,6 @@
                         <th scope="col">Date Set</th>
                         <th scope="col">Collectee Name</th>
                         <th scope="col">Landmark</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Collectee Number</th>
 
 
@@ -23,7 +22,6 @@
                             <td>{{$app->day_of_week}}</td>
                             <td>{{$app->user->name}}</td>
                             <td>{{$app->landmark}}</td>
-                            <td>{{$app->status}}</td>
                             <td>{{$app->user->phone_number}}</td>
 
                         </tr>

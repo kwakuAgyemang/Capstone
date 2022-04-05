@@ -26,8 +26,6 @@ class RegisterController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'latitude' => 'required|max:255',
-            'longitude' => 'required|max:255',
             'password' => 'required|confirmed',
 
         ]);
@@ -35,8 +33,6 @@ class RegisterController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
 
             'password' => Hash::make($request->password),
         ]);
@@ -54,18 +50,24 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
             'vehicle_num' => 'required|max:10',
-            'latitude' => 'required|max:255',
-            'longitude' => 'required|max:255',
+
             'password' => 'required|confirmed',
 
         ]);
+        if($request->hasFile('profile_pic')){
+            $destination_path = 'public/images/profile';
+            $image = $request->file('profile_pic');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('profile_pic')->storeAs($destination_path, $image_name);
+
+
+        }
         //store the user
         Collector::create([
             'name' => $request->name,
             'email' => $request->email,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
             'vehicle_num' => $request->vehicle_num,
+            'profile_pic' =>$image_name,
             'password' => Hash::make($request->password),
         ]);
         //sign in
