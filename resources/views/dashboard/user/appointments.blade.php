@@ -20,7 +20,7 @@
                         <label for="" class="mt-3">Please select a Collector</label>
                         <select class="form-select mt-1" name="collector_id" id="collectors">
                             @foreach ( $data as  $collector)
-                                <option value="{{$collector->id}}">{{$collector->name}}</option>
+                                <option value="{{$collector->id}}">{{$collector->fname}} {{$collector->lname}}</option>
                             @endforeach
 
                         </select>

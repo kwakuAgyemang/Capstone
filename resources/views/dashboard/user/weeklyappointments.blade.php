@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container">
-    <div class="card mt-5">
+    <div class="mt-5">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -11,7 +11,7 @@
 
                 <div class="panel-body">
                     <h1></h1>
-                    <form action="{{route('weeklyappointments')}}" method="post">
+                    <form action="{{route('user.weeklyappointments')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="">Pick Day</label>
@@ -29,7 +29,7 @@
                         <label for="" class="mt-3">Please select a Collector</label>
                         <select class="form-select mt-1" name="collector_id" id="collectors">
                             @foreach ( $data as  $collector)
-                                <option value="{{$collector->id}}">{{$collector->name}}</option>
+                                <option value="{{$collector->id}}">{{$collector->fname}}  {{$collector->lname}}</option>
                             @endforeach
 
                         </select>

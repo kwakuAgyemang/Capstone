@@ -23,7 +23,6 @@ class Appointments extends Model
         'house_number',
         'user_id',
         'status',
-        'Day_of_week'
 
     ];
 

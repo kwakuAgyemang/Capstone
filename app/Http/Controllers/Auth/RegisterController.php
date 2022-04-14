@@ -26,6 +26,7 @@ class RegisterController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
+            'phone_num' => 'required',
             'password' => 'required|confirmed',
 
         ]);
@@ -33,7 +34,7 @@ class RegisterController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-
+            'phone_num' => $request->phone_num,
             'password' => Hash::make($request->password),
         ]);
         //sign in
@@ -47,15 +48,15 @@ class RegisterController extends Controller
     public function storeCollector(Request $request){
         //validation
         $this->validate($request, [
-            'name' => 'required|max:255',
+            'fname' => 'required|max:255',
+            'lname' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'vehicle_num' => 'required|max:10',
-
+            'vehicle_num' => 'required|max:12',
             'password' => 'required|confirmed',
 
         ]);
         if($request->hasFile('profile_pic')){
-            $destination_path = 'public/images/profile';
+            $destination_path = 'public/images/';
             $image = $request->file('profile_pic');
             $image_name = $image->getClientOriginalName();
             $path = $request->file('profile_pic')->storeAs($destination_path, $image_name);
@@ -64,7 +65,8 @@ class RegisterController extends Controller
         }
         //store the user
         Collector::create([
-            'name' => $request->name,
+            'fname' => $request->fname,
+            'lname' => $request->lname,
             'email' => $request->email,
             'vehicle_num' => $request->vehicle_num,
             'profile_pic' =>$image_name,

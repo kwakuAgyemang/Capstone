@@ -14,9 +14,8 @@
                     <tr>
                         <th scope="col">Date Set</th>
                         <th scope="col">Collector Selected</th>
-                        <th scope="col">Regularity</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Day of Week</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -25,17 +24,9 @@
                         @foreach(auth()->user()->appointments as $app)
                         <tr>
                             <td>{{$app->date}}</td>
-                            <td>{{$app->collector->name}}</td>
-                            <td>
-                                @if ($app->regularity == 2)
-                                    Weekly
-                                @elseif ($app->regularity == 1)
-                                    One time
-                                @endif
-
-                            </td>
+                            <td>{{$app->collector->fname}} {{$app->collector->lname}} </td>
                             <td>{{$app->status}}</td>
-                            <td>{{$app->Day_of_week}}</td>
+
                         </tr>
 
                         @endforeach
@@ -58,7 +49,7 @@
                         @foreach(auth()->user()->weeklyappointments as $app)
                         <tr>
                             <td>{{$app->day_of_week}}</td>
-                            <td>{{$app->collector->name}}</td>
+                            <td>{{$app->collector->fname}} {{$app->collector->lname}}</td>
                             <td>{{$app->status}}</td>
                         </tr>
 

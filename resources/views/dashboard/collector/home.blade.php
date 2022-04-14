@@ -24,7 +24,7 @@
                         <td>{{$app->user->name}}</td>
                         <td>{{$app->landmark}}</td>
                         <td>{{$app->status}}</td>
-                        <td>{{$app->user->phone_number}}</td>
+                        <td>{{$app->user->phone_num}}</td>
                         <td>Weekly</td>
 
 
@@ -57,7 +57,7 @@
                             <td>{{$app->user->name}}</td>
                             <td>{{$app->landmark}}</td>
                             <td>{{$app->status}}</td>
-                            <td>{{$app->user->phone_number}}</td>
+                            <td>{{$app->user->phone_num}}</td>
 
                         </tr>
 

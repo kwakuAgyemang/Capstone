@@ -16,6 +16,7 @@ class AppointmentController extends Controller
     }
     public function index(){
         $data = DB::table('collectors')->get();
+        //dd($data);
         return view('dashboard.user.appointments', [
             'data' => $data
         ]);

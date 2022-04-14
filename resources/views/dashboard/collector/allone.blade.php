@@ -1,9 +1,13 @@
 @extends('layouts.Capp')
 @section('content')
+<style>
 
-
-<p class="lead">All Daily Appointments</p>
-            <table class="table table-responsive">
+</style>
+<div class="container">
+    <div class="col-lg-12">
+        <p class="lead">All Daily Appointments</p>
+        <div class="table-responsive">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Date Set</th>
@@ -11,27 +15,23 @@
                         <th scope="col">Landmark</th>
                         <th scope="col">Status</th>
                         <th scope="col">Collectee Number</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($oneTime as $app)
+                    <tr>
+                        <td>{{$app->date}}</td>
+                        <td>{{$app->user->name}}</td>
+                        <td>{{$app->landmark}}</td>
+                        <td>{{$app->status}}</td>
+                        <td>{{$app->user->phone_num}}</td>
 
-
-                        @foreach($oneTime as $app)
-                        <tr>
-                            <td>{{$app->date}}</td>
-                            <td>{{$app->user->name}}</td>
-                            <td>{{$app->landmark}}</td>
-                            <td>{{$app->status}}</td>
-                            <td>{{$app->user->phone_number}}</td>
-
-                        </tr>
-
-                        @endforeach
-
-
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
 
 @endsection

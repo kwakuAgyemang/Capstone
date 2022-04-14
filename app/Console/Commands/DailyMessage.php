@@ -5,6 +5,7 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use App\Models\Appointments;
+use App\Models\Collector;
 use App\Models\WeeklyAppointments;
 
 class DailyMessage extends Command
@@ -56,6 +57,10 @@ class DailyMessage extends Command
 
 
     public function Arkesel(){
+        $numbers = Appointments::where('collector_id', auth()->user()->id)->where('date', $date)->with('user')->get();
+        foreach($numbers as $appointments){
+
+
         // SCHEDULE SMS
         $curl = curl_init();
 
@@ -70,9 +75,9 @@ class DailyMessage extends Command
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => http_build_query([
-                'sender' => 'Helloworld',
-                'message' => 'Welcome to Arkesel SMS API v2. Please enjoy the experience.',
-                'recipients' => ['233542336719', '233268155768'],
+                'sender' => 'AbobyaExpress',
+                'message' => '',
+                'recipients' => '',
                 'scheduled_date' => '2021-03-17 07:00 AM'
             ]),
         ]);
@@ -81,6 +86,7 @@ class DailyMessage extends Command
 
         curl_close($curl);
         echo $response;
+    }
 
         // $curl = curl_init();
 

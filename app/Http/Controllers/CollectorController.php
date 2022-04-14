@@ -34,7 +34,7 @@ class CollectorController extends Controller
 
         //Getting all the collector's one time appointments due today
         $data1 = Appointments::where('collector_id', auth()->user()->id)->where('date', $date)->with('user')->get();
-
+        //dd($data1);
         //Getting all the collector's weekly appointments due today
         $data2 = WeeklyAppointment::where(array(
             'day_of_week'  => $day,
@@ -67,6 +67,18 @@ class CollectorController extends Controller
         return view('dashboard.collector.allone', [
             'oneTime' => $oneTime
         ]);
+    }
+
+    public function displayImages($filename){
+        $path = storage_public('images/' . $filename);
+        if (!File::exists($path)) {
+            abort(404);
+        }
+        $file = File::get($path);
+        $type = File::mimeType($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
     }
 
 

@@ -22,7 +22,7 @@
                             <td>{{$app->day_of_week}}</td>
                             <td>{{$app->user->name}}</td>
                             <td>{{$app->landmark}}</td>
-                            <td>{{$app->user->phone_number}}</td>
+                            <td>{{$app->user->phone_num}}</td>
 
                         </tr>
 

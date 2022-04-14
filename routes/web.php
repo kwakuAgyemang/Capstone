@@ -57,6 +57,7 @@ Route::prefix('collector')->name('collector.')->group(function(){
     Route::middleware(['auth:collector', 'PreventBackHistory'])->group(function(){
         Route::get('/home', [CollectorController::class, 'index'])->name('home');
         Route::post('/logout', [LogoutController::class, 'storeCollector'])->name('logout');
+        Route::get('image/{filename}', [CollectorController::class, 'displayImages'])->name('image.displayImage');
         Route::get('/allWeekly', [CollectorController::class, 'allWeekly'])->name('allWeekly');
         Route::get('/alloneTime', [CollectorController::class, 'allOne'])->name('allOne');
     });

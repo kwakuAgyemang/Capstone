@@ -116,6 +116,15 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control @error('phone_num') border-warning @enderror" name="phone_num" placeholder="Phone Number" value="{{old('phone_num')}}" >
+                @error('phone_num')
+                <div class="alert alert-danger alert-dismissible fade show mt-2">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
             <input type="hidden" name="latitude">
             <input type="hidden" name="longitude">
 

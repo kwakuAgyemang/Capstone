@@ -2,6 +2,22 @@
 
 @section('content')
 <style>
+    .image-preview{
+        width: 300px;
+        min-height: 100px;
+        border: 2px solid #dddddd;
+        margin-top: 15px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #cccccc
+    }
+    .image-preview__image{
+        display: none;
+        width: 100%;
+    }
     body {
         color: #fff;
         background: #050607;
@@ -100,9 +116,19 @@
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
             <div class="form-group">
                 <div class="row">
-                    <div class="col "><input type="text" class="form-control @error('name') border-warning @enderror" name="name" placeholder="Name" value="{{old('name')}}"></div>
+                    <div class="col "><input type="text" class="form-control @error('fname') border-warning @enderror" name="fname" placeholder="First Name" value="{{old('fname')}}"></div>
                 </div>
-                @error('name')
+                @error('fname')
+                    <div class="alert alert-danger alert-dismissible fade show mt-2">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col "><input type="text" class="form-control @error('lname') border-warning @enderror" name="lname" placeholder="Last Name" value="{{old('lname')}}"></div>
+                </div>
+                @error('lname')
                     <div class="alert alert-danger alert-dismissible fade show mt-2">
                         {{$message}}
                     </div>
@@ -152,7 +178,8 @@
                 <label for="">Profile Picture</label>
                 <input type="file" class="form-control-file" id="profile_pic" name="profile_pic">
                 <div class="image-preview" id="imagePreview">
-                    <span class="image-preview__default-text">Image Preview</span>
+                    <img src="" alt="Image Preview" class="image-preview__image" id="image-preview__image">
+                    <span class="image-preview__default-text" id="image-preview__default-text">Image Preview</span>
                 </div>
             </div>
 
@@ -166,35 +193,34 @@
         </form>
         <div class="text-center">Already have an account? <a href="{{route('collector.login')}}">Sign in</a></div>
     </div>
+
+
     <script>
+        const inpFile = document.getElementById('profile_pic');
+        const previewContainer = document.getElementById('imagePreview');
+        const previewImage = previewContainer.querySelector('.image-preview__image');
+        const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
 
+        inpFile.addEventListener('change', function(){
+            const file = this.files[0];
 
+            //console.log(file);
+            if(file){
+                const reader = new FileReader();
 
-        if('geolocation' in navigator){
-            console.log('geolocation available');
-            navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position);
-                let latitude = position.coords.latitude;
-                let longitude = position.coords.longitude;
+                previewDefaultText.style.display = "none";
+                previewImage.style.display = "block";
 
-                document.querySelector('.myform input[name = "latitude"]').value = position.coords.latitude;
-                document.querySelector('.myform input[name = "longitude"]').value = position.coords.longitude;
-            });
-            function showError(error){
-                switch(error.code){
-                    case error.PERMISSION_DENIED:
-                        alert("You must Allow the Request for Geolocation");
-                        location.reload();
-                        break;
-                }
+                reader.addEventListener('load', function(){
+                    previewImage.setAttribute('src', this.result);
+                });
+                reader.readAsDataURL(file);
+            }else{
+                previewDefaultText.style.display = null;
+                previewImage.style.display = null;
+                previewImage.setAttribute('src', '');
             }
-
-        }
-        else{
-            console.log('geolocation not available');
-        };
-
-
+        });
     </script>
 
 
