@@ -77,8 +77,7 @@ class DailyMessage extends Command
             CURLOPT_POSTFIELDS => http_build_query([
                 'sender' => 'AbobyaExpress',
                 'message' => '',
-                'recipients' => '',
-                'scheduled_date' => '2021-03-17 07:00 AM'
+                'recipients' => $appointments->collector->phone_num,
             ]),
         ]);
 

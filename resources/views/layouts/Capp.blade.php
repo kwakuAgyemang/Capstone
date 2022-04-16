@@ -54,10 +54,10 @@
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href=""><img src="{{ asset('/storage/images/profile/'.auth()->user()->profile_pic) }}" alt="Avatar" class="avatar"></a>
+                        <a href=""><img src="{{ asset('/storage/images/profile/'.auth()->user()->profile_pic) }}" alt="Avatar" class="avatar mr-2"></a>
 
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item mt-2">
                         <form action="{{route('collector.logout')}}" method="post">
                             @csrf
                             <button type="submit" class="btn btn-danger">Logout</button>

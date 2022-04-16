@@ -23,7 +23,8 @@ class Collector extends Authenticatable
         'email',
         'password',
         'vehicle_num',
-        'profile_pic'
+        'profile_pic',
+        'phone_num'
     ];
 
     /**

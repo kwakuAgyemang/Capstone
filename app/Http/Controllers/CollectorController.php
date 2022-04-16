@@ -41,6 +41,8 @@ class CollectorController extends Controller
             'collector_id' => auth()->user()->id
         ))
         ->get();
+        //dd($data2);
+
 
 
 

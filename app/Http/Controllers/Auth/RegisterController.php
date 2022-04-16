@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'lname' => 'required|max:255',
             'email' => 'required|email|max:255',
             'vehicle_num' => 'required|max:12',
+            'phone_num' => 'required|max:10',
             'password' => 'required|confirmed',
 
         ]);
@@ -70,6 +71,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'vehicle_num' => $request->vehicle_num,
             'profile_pic' =>$image_name,
+            'phone_num' => $request->phone_num,
             'password' => Hash::make($request->password),
         ]);
         //sign in

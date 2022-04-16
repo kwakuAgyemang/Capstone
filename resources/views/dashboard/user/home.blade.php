@@ -7,9 +7,15 @@
     </div>
 
     <div class="container">
+        <div class="col-lg-12">
+            <caption style="border: inherit; background-color: lightgrey;">
+                <span class="align-left"><strong>One time appointments</strong></span>
+            </caption>
 
-            <p class="lead">One time appointments</p>
-            <table class="table table-responsive">
+            <div class="table-responsive">
+
+
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Date Set</th>
@@ -34,9 +40,15 @@
 
                 </tbody>
             </table>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <caption style="border: inherit; background-color: lightgrey;">
+                <span class="align-left"><strong>Weekly Appointments</strong></span>
+            </caption>
+            <div class="table-responsive">
 
-            <p class="lead">Weekly Appointments</p>
-            <table class="table table-responsive">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Day Set</th>
@@ -58,10 +70,12 @@
 
                 </tbody>
             </table>
+            </div>
+        </div>
 
 
-        <a class="btn btn-success" href="{{route('user.appointments')}}" style="">Make an appointment</a>
-        <a class="btn btn-success" href="{{route('user.weeklyappointments')}}" style="">Make a weekly appointment</a>
+        <a class="btn btn-success mb-2" href="{{route('user.appointments')}}" style="">Make an appointment</a>
+        <span><a class="btn btn-success" href="{{route('user.weeklyappointments')}}" style="">Make a weekly appointment</a></span>
     </div>
 
 
