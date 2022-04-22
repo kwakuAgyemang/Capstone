@@ -19,7 +19,9 @@ class WeeklyAppointmentController extends Controller
         ]);
     }
 
-
+    /**
+     * Creating a new WeeklyAppointment
+     */
     public function store(Request $request){
         //dd($request);
         $this->validate($request, [

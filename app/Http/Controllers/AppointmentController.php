@@ -14,17 +14,22 @@ class AppointmentController extends Controller
     {
         $this->middleware(['auth']);
     }
+
+    /**
+     * Redirecting to the appointments page
+     */
     public function index(){
         $data = DB::table('collectors')->get();
-        //dd($data);
+
         return view('dashboard.user.appointments', [
             'data' => $data
         ]);
     }
 
-
+    /**
+     * Creating a new Appointment
+     */
     public function store(Request $request){
-        //dd($request);
         $this->validate($request, [
             'date' => 'required',
             'collector_id' => 'required',
@@ -32,10 +37,7 @@ class AppointmentController extends Controller
             'user_id' => 'required',
             'landmark' => 'required',
         ]);
-
-        //dd($request->date);
         $day = Carbon::createFromFormat('Y-m-d', $request->date)->format('l');
-
 
         //store the appointment
         Appointments::create([
@@ -47,9 +49,6 @@ class AppointmentController extends Controller
             'status' => 'PENDING',
             'Day_of_week' => $day
         ]);
-
-
-
 
         return redirect()->route('user.home');
     }

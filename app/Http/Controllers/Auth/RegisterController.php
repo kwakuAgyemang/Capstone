@@ -17,10 +17,16 @@ class RegisterController extends Controller
         $this->middleware(['guest']);
     }
 
+    /**
+     * Redirect to register page
+     */
     public function index(){
         return view('auth.register');
     }
 
+    /**
+     * Creating a new User
+     */
     public function storeUser(Request $request){
         //validation
         $this->validate($request, [
@@ -45,6 +51,9 @@ class RegisterController extends Controller
         return redirect()->route('dashboard.user.home');
     }
 
+    /**
+     * Creating a new collector
+     */
     public function storeCollector(Request $request){
         //validation
         $this->validate($request, [
@@ -75,9 +84,9 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
         //sign in
-        //if(!auth()->collector()->attempt($request->only('email', 'password'))){
-            //return back()->with('Error', 'Invalid Credentials');
-        //}
+        if(!auth()->collector()->attempt($request->only('email', 'password'))){
+            return back()->with('Error', 'Invalid Credentials');
+        }
         //redirecting
         //$data = DB::table('co')->where('user_role', 0)->get();
 

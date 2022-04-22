@@ -43,10 +43,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Connects it to the Appointments class
+     */
     public function appointments(){
         return $this->hasMany(Appointments::class);
     }
 
+    /**
+     * Connects it to the WeeklyAppointments class
+     */
     public function weeklyappointments(){
         return $this->hasMany(WeeklyAppointment::class);
     }

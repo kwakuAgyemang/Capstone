@@ -13,10 +13,10 @@ class DashboardController extends Controller
         $this->middleware(['auth']);
     }
 
+    /**
+     * Redirects to the dashboard
+     */
     public function index(){
-
-        //$data = Appointments::where('user_id', auth()->user()->id)->with('user')->orderBy('created_at')->get();
-        //dd($data);
         return view('dashboard');
     }
 }

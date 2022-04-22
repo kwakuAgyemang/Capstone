@@ -107,7 +107,8 @@
         text-decoration: underline;
     }
     </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
     <div class="signup-form">
         <form action="{{route('collector.create')}}" class="myform" method="post" enctype="multipart/form-data">
@@ -151,9 +152,14 @@
                 @enderror
             </div>
 
-
-
-
+            <div class="form-group">
+                <input type="tel" id="phone" class="form-control @error('phone_num') border-warning @enderror" name="phone_num" placeholder="Phone Number" value="{{old('phone_num')}}" >
+                @error('phone_num')
+                <div class="alert alert-danger alert-dismissible fade show mt-2">
+                    {{$message}}
+                </div>
+                @enderror
+            </div>
 
             <div class="form-group">
                 <input type="password" class="form-control @error('password') border-warning @enderror" name="password" placeholder="Password" >
@@ -163,7 +169,6 @@
                 </div>
                 @enderror
             </div>
-
 
             <div class="form-group">
                 <input type="password" class="form-control @error('password_confirmation') border-warning @enderror" name="password_confirmation" placeholder="Confirm Password" >
@@ -183,9 +188,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-            </div>
+
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
             </div>
@@ -222,6 +225,35 @@
             }
         });
     </script>
+    <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            preferredCountries: ["gh"],
+
+            utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+        const info = document.querySelector(".alert-info");
+        function process(event) {
+        event.preventDefault();
+
+        const phoneNumber = phoneInput.getNumber();
+
+        info.style.display = "";
+        info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+        }
+        function getIp(callback) {
+            fetch('https://ipinfo.io/json?token=<your token>', { headers: { 'Accept': 'application/json' }})
+            .then((resp) => resp.json())
+            .catch(() => {
+                return {
+                country: "gh",
+                };
+            })
+            .then((resp) => callback(resp.country));
+        }
+
+      </script>
 
 
 @endsection

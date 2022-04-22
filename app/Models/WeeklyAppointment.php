@@ -21,10 +21,16 @@ class WeeklyAppointment extends Model
 
     ];
 
+    /**
+     * Connects it to the User class
+     */
     public function user(){
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Connects it to the Collector class
+     */
     public function collector(){
         return $this->belongsTo(Collector::class);
     }

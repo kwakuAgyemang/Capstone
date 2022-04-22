@@ -18,13 +18,15 @@ class LoginController extends Controller
 
         return view('auth.login');
     }
-
+    /**
+     * Loggin in a User
+     */
     public function storeUser(Request $request){
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        //dd($request->only('email', 'password'));
+
         $creds = $request->only('email', 'password');
 
         if(!Auth::attempt($creds)) {
@@ -37,17 +39,18 @@ class LoginController extends Controller
         return redirect()->route('user.home');
     }
 
+    /**
+     * Loggin in a Collector
+     */
     public function storeCollector(Request $request){
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        //dd($request->only('email', 'password'));
 
         if(!Auth::guard('collector')->attempt($request->only('email', 'password'))) {
             return back()->with('status', 'Invalid login details');
         }
-
 
         //redirecting
 

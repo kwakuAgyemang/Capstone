@@ -41,6 +41,7 @@ class DailyMessage extends Command
      */
     public function handle()
     {
+        Arkesel();
         \Log::info('Working');
     }
 
@@ -57,7 +58,10 @@ class DailyMessage extends Command
 
 
     public function Arkesel(){
-        $numbers = Appointments::where('collector_id', auth()->user()->id)->where('date', $date)->with('user')->get();
+        $date = Carbon::now();
+        $date = $date->toDateString();
+        $numbers = Appointments::where('date', $date)->with('user')->get();
+        $weeklyApp = getWeeklyApp();
         foreach($numbers as $appointments){
 
 
@@ -76,7 +80,9 @@ class DailyMessage extends Command
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => http_build_query([
                 'sender' => 'AbobyaExpress',
-                'message' => '',
+                'message' => 'Name: '.$appointments->user->name.'
+                              Landmark:  '.$appointments->landmark.'
+                              Phone Number:'.$appointments->collector->phone_num,
                 'recipients' => $appointments->collector->phone_num,
             ]),
         ]);
@@ -86,30 +92,6 @@ class DailyMessage extends Command
         curl_close($curl);
         echo $response;
     }
-
-        // $curl = curl_init();
-
-        // curl_setopt_array($curl, [
-        //     CURLOPT_URL => 'https://sms.arkesel.com/api/v2/sms/send',
-        //     CURLOPT_HTTPHEADER => ['api-key: cE9QRUkdjsjdfjkdsj9kdiieieififiw='],
-        //     CURLOPT_RETURNTRANSFER => true,
-        //     CURLOPT_ENCODING => '',
-        //     CURLOPT_MAXREDIRS => 10,
-        //     CURLOPT_TIMEOUT => 0,
-        //     CURLOPT_FOLLOWLOCATION => true,
-        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //     CURLOPT_CUSTOMREQUEST => 'POST',
-        //     CURLOPT_POSTFIELDS => http_build_query([
-        //         'sender' => 'Helloworld',
-        //         'message' => 'Welcome to Arkesel SMS API v2. Please enjoy the experience.',
-        //         'recipients' => ['233542336719', '233268155768']
-        //     ]),
-        // ]);
-
-        // $response = curl_exec($curl);
-
-        // curl_close($curl);
-        // echo $response;
 
     }
 }

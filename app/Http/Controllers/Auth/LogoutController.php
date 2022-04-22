@@ -12,11 +12,18 @@ class LogoutController extends Controller
     {
         $this->middleware(['auth']);
     }
+
+    /**
+     * Logging out a User
+     */
     public function store(){
         auth()->logout();
         return redirect()->route('home');
     }
 
+    /**
+     * Logging out a Collector
+     */
     public function storeCollector(){
         Auth::guard('collector')->logout();
         return redirect()->route('home');
