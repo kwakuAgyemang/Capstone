@@ -24,6 +24,7 @@
         padding: 30px 0;
           font-size: 15px;
     }
+
     .signup-form h2 {
         color: #636363;
         margin: 0 0 15px;
@@ -90,10 +91,44 @@
     .signup-form form a:hover {
         text-decoration: underline;
     }
+    @media screen and (max-width: 420px){
+        #signup-form {
+            width: 370px;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+        }
+    }
+    @media screen and (max-width: 280px){
+        #signup-form {
+            width: 270px;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+        }
+    }
+    @media screen and (max-width: 768px){
+        #signup-form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+
+        }
+    }
+    @media screen and (max-width: 1000px){
+        #signup-form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+
+        }
+    }
     </style>
 
 
-    <div class="signup-form">
+    <div class="signup-form" id="signup-form">
         <form action="{{route('collector.login')}}" method="post">
             @csrf
             @if (session('status'))
@@ -111,7 +146,8 @@
                 @enderror
             </div>
             <div class="form-group">
-                <input type="password" class="form-control @error('password') border-warning @enderror" name="password" placeholder="Password" >
+                <input type="password" id="password-fiel" class="form-control @error('password') border-warning @enderror" name="password" placeholder="Password">
+                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                 @error('password')
                 <div class="alert alert-danger alert-dismissible fade show mt-2">
                     {{$message}}
@@ -125,5 +161,6 @@
         </form>
 
     </div>
+
 
 @endsection

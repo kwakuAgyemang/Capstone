@@ -5,6 +5,7 @@
     <div class="container mt-5">
         <h1 class="display-4">Welcome To Aboboya Express</h1>
     </div>
+</div>
 
     <div class="container">
             <p class="lead">Due Today</p>
@@ -51,40 +52,33 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($data as $app)
+                    <tr>
+                        <td>{{$app->date}}</td>
+                        <td>{{$app->user->name}}</td>
+                        <td>{{$app->landmark}}</td>
+                        <td>
+                            @if ($app->regularity === 1)
+                            Once
+                            @else
+                                Weekly
+                            @endif
+                        </td>
+                        <td>{{$app->status}}</td>
+                        <td>{{$app->user->phone_number}}</td>
+                        <td>
+                            <form action="">
+                                @csrf
+                                <button class="btn btn-success">Complete</button>
 
+                            </form>
+                        </td>
+                    </tr>
 
-                        @foreach($data as $app)
-                        <tr>
-                            <td>{{$app->date}}</td>
-                            <td>{{$app->user->name}}</td>
-                            <td>{{$app->landmark}}</td>
-                            <td>
-                                @if ($app->regularity === 1)
-                                Once
-                                @else
-                                    Weekly
-                                @endif
-                            </td>
-                            <td>{{$app->status}}</td>
-                            <td>{{$app->user->phone_number}}</td>
-                            <td>
-                                <form action="">
-                                    @csrf
-                                    <button class="btn btn-success">Complete</button>
-
-                                </form>
-                            </td>
-                        </tr>
-
-                        @endforeach
-
-
+                    @endforeach
                 </tbody>
             </table>
 
 
     </div>
-
-
-  </div>
 @endsection

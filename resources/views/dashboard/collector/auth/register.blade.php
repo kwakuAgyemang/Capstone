@@ -106,6 +106,40 @@
     .signup-form form a:hover {
         text-decoration: underline;
     }
+    @media screen and (max-width: 420px){
+        #signup-form {
+            width: 370px;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+        }
+    }
+    @media screen and (max-width: 280px){
+        #signup-form {
+            width: 270px;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+        }
+    }
+    @media screen and (max-width: 768px){
+        #signup-form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+
+        }
+    }
+    @media screen and (max-width: 1000px){
+        #signup-form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+
+        }
+    }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
@@ -180,7 +214,7 @@
             </div>
 
             <div class="form-group">
-                <label for="">Profile Picture</label>
+                <label for="">Profile Picture</label><br>
                 <input type="file" class="form-control-file" id="profile_pic" name="profile_pic">
                 <div class="image-preview" id="imagePreview">
                     <img src="" alt="Image Preview" class="image-preview__image" id="image-preview__image">

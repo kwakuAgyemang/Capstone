@@ -30,7 +30,7 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::middleware(['guest', 'PreventBackHistory'])->group(function(){
         Route::view('/login', 'dashboard.user.auth.login')->name('login');
-        Route::view('/register', 'dashboard.user.auth.register')->name('register');
+        Route::get('/register', [RegisterController::class, 'index'])->name('register');
         Route::post('/register', [RegisterController::class, 'storeUser'])->name('create');
         Route::post('/login', [LoginController::class, 'storeUser']);
     });

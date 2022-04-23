@@ -90,6 +90,40 @@
     .signup-form form a:hover {
         text-decoration: underline;
     }
+    @media screen and (max-width: 420px){
+        #signup-form {
+            width: 370px;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+        }
+    }
+    @media screen and (max-width: 280px){
+        #signup-form {
+            width: 270px;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+        }
+    }
+    @media screen and (max-width: 768px){
+        #signup-form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+
+        }
+    }
+    @media screen and (max-width: 1000px){
+        #signup-form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 30px 0;
+            font-size: 15px;
+
+        }
+    }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
@@ -128,6 +162,15 @@
             </div>
 
             <div class="form-group">
+                <label for="area">Area</label>
+                <select name="area" id="" class="form-control @error('password') border-warning @enderror"  required>
+                    @foreach ( $area as $a )
+                        <option value="{{$a->id}}">{{$a->areaName}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <input type="password" class="form-control @error('password') border-warning @enderror" name="password" placeholder="Password" required>
                 @error('password')
                 <div class="alert alert-danger alert-dismissible fade show mt-2">
@@ -135,7 +178,6 @@
                 </div>
                 @enderror
             </div>
-
 
             <div class="form-group">
                 <input type="password" class="form-control @error('password_confirmation') border-warning @enderror" name="password_confirmation" placeholder="Confirm Password" required>
