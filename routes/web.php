@@ -24,6 +24,15 @@ use App\Http\Controllers\User\UserController;
 Route::get('/', function () {
     return view('index');
 })->name('home');
+Route::get('/pricing', function () {
+    return view('pricing');
+})->name('pricing');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 
 Route::prefix('user')->name('user.')->group(function(){
