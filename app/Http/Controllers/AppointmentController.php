@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointments;
+use App\Models\Collector;
+use App\Models\AreaCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +12,9 @@ use Carbon\Carbon;
 class AppointmentController extends Controller
 {
 
+    /**
+     * User Authentication
+     */
     public function __construct()
     {
         $this->middleware(['auth']);
@@ -19,8 +24,8 @@ class AppointmentController extends Controller
      * Redirecting to the appointments page
      */
     public function index(){
-        $data = DB::table('collectors')->get();
-
+        $data = AreaCollection::with('collector')->where('area_id',auth()->user()->area)->get();
+        //dd($data);
         return view('dashboard.user.appointments', [
             'data' => $data
         ]);

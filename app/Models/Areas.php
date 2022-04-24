@@ -20,4 +20,13 @@ class Areas extends Model
         'areaName',
 
     ];
+
+    /**
+     * Connects it to the User class
+     */
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+
 }

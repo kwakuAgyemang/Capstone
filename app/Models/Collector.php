@@ -59,4 +59,8 @@ class Collector extends Authenticatable
     public function weeklyAppointments(){
         return $this->hasMany(WeeklyAppointments::class);
     }
+
+    public function areacollection(){
+        return $this->hasMany(AreaCollection::class);
+    }
 }

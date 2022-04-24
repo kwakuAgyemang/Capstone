@@ -128,8 +128,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
+
+
+
     <div class="signup-form">
         <form action="{{route('user.create')}}" class="myform" method="post">
+
             @csrf
             <h2>Register</h2>
             <p class="hint-text">Create your account. It's free and only takes a minute.</p>
@@ -196,7 +200,7 @@
         <div class="text-center">Already have an account? <a href="{{route('user.login')}}">Sign in</a></div>
     </div>
 
-    <script src="{{asset('js/script.js')}}"></script>
+
     <script>
         const phoneInputField = document.querySelector("#phone");
         const phoneInput = window.intlTelInput(phoneInputField, {
@@ -225,6 +229,19 @@
             })
             .then((resp) => callback(resp.country));
         }
+
+    function handleResponse(response) {
+        // decodeJwtResponse() is a custom function defined by you
+        // to decode the credential response.
+        const responsePayload = decodeJwtResponse(response.credential);
+
+        console.log("ID: " + responsePayload.sub);
+        console.log('Full Name: ' + responsePayload.name);
+        console.log('Given Name: ' + responsePayload.given_name);
+        console.log('Family Name: ' + responsePayload.family_name);
+        console.log("Image URL: " + responsePayload.picture);
+        console.log("Email: " + responsePayload.email);
+    }
 
       </script>
 

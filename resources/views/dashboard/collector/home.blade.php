@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="jumbotron">
-    <div class="container mt-5">
+    <div class="container mt-5 ">
         <h1 class="display-4">Welcome {{auth()->user()->fname}} {{auth()->user()->lname}}</h1>
     </div>
 </div>
@@ -11,7 +11,7 @@
     <div class="col-lg-12">
 
 
-        <div class="table table-responsive">
+        <div class="table table-responsive mt-3">
 
             <caption style="border: inherit; background-color: lightgrey;">
                 <span class="align-left"><strong>Appointments Due Today</strong></span>

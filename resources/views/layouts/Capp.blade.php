@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only -->
 
-
+    <link rel="shortcut icon" href="{{asset('/storage/images/profile/AboboyaExpress-logos.jpeg' )}}" type="image/x-icon" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>AboboyaExpress</title>
 </head>
@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
           <a class="navbar-brand" href="{{route('collector.home')}}">
-            <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="36">
+            <img src="{{asset('/storage/images/profile/AboboyaExpress-logos.jpeg' )}}" alt="..." height="36">
           </a>
           @auth
 
@@ -54,7 +54,7 @@
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href=""><img src="{{ asset('/storage/images/profile/'.auth()->user()->profile_pic) }}" alt="Avatar" class="avatar mr-2"></a>
+                        <a href="{{route('collector.profile')}}"><img src="{{ asset('/storage/images/profile/'.auth()->user()->profile_pic) }}" alt="Avatar" class="avatar mr-2"></a>
 
                     </li>
                     <li class="nav-item mt-2">

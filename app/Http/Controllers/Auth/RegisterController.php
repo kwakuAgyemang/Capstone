@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Areas;
 use App\Models\Collector;
+use App\Models\AreaCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -24,6 +25,15 @@ class RegisterController extends Controller
     public function index(){
         $area = Areas::get();
         return view('dashboard.user.auth.register' , [
+            'area' => $area
+        ]);
+    }
+    /**
+     * Redirect to register page
+     */
+    public function Cindex(){
+        $area = Areas::get();
+        return view('dashboard.collector.auth.register' , [
             'area' => $area
         ]);
     }
@@ -71,8 +81,10 @@ class RegisterController extends Controller
             'password'    => 'required|confirmed',
         ]);
 
+
+
         if($request->hasFile('profile_pic')){
-            $destination_path = 'public/images/';
+            $destination_path = 'public/images/profile/';
             $image = $request->file('profile_pic');
             $image_name = $image->getClientOriginalName();
             $path = $request->file('profile_pic')->storeAs($destination_path, $image_name);
@@ -89,13 +101,11 @@ class RegisterController extends Controller
             'password'    => Hash::make($request->password),
 
         ]);
-        //sign in
-        if(!auth()->collector()->attempt($request->only('email', 'password'))){
-            return back()->with('Error', 'Invalid Credentials');
-        }
+
+
         //redirecting
         //$data = DB::table('co')->where('user_role', 0)->get();
 
-        return redirect()->route('collector.home');
+        return redirect()->route('collector.login');
     }
 }

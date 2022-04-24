@@ -6,8 +6,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Appointments;
+use App\Models\AreaCollection;
 use App\Models\WeeklyAppointment;
 use Carbon\Carbon;
+use App\Models\Collector;
+use App\Models\Areas;
+use Illuminate\Support\Facades\Auth;
+
 
 class CollectorController extends Controller
 {
@@ -69,6 +74,38 @@ class CollectorController extends Controller
         return view('dashboard.collector.allone', [
             'oneTime' => $oneTime
         ]);
+    }
+
+    public function profile(){
+        $area = Areas::get();
+        return view('dashboard.collector.profile', [
+            'area' => $area
+        ]);
+    }
+
+
+    public function collectAreas(Request $request){
+        //dd($request);
+        if($request->input('areas')!==null){
+            $area = DB::table('area_collection')->where('collector_id', auth()->user()->id)->delete();
+            $areasCollect = $request->input('areas');
+            for($i=0; $i<count($areasCollect); $i++){
+                AreaCollection::create([
+                    'area_id'      => $areasCollect[$i],
+                    'collector_id' => auth()->user()->id,
+
+                ]);
+            }
+        }
+
+        $collector = Auth::user();
+        $collector->vehicle_num = $request->vehicle_num;
+        $collector->phone_num = $request->phone_num;
+        $collector->save();
+
+        return redirect()->route('collector.home');
+
+
     }
 
 

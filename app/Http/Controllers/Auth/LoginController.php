@@ -54,6 +54,6 @@ class LoginController extends Controller
 
         //redirecting
 
-        return redirect()->route('collector.home');
+        return redirect()->route('collector.profile');
     }
 }

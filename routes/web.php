@@ -48,7 +48,7 @@ Route::prefix('collector')->name('collector.')->group(function(){
 
     Route::middleware(['guest:collector', 'PreventBackHistory'])->group(function(){
         Route::view('/login', 'dashboard.collector.auth.login')->name('login');
-        Route::view('/register', 'dashboard.collector.auth.register')->name('register');
+        Route::get('/register', [RegisterController::class, 'Cindex'])->name('register');
         Route::post('/register', [RegisterController::class, 'storeCollector'])->name('create');
         Route::post('/login', [LoginController::class, 'storeCollector']);
 
@@ -60,5 +60,7 @@ Route::prefix('collector')->name('collector.')->group(function(){
         Route::get('image/{filename}', [CollectorController::class, 'displayImages'])->name('image.displayImage');
         Route::get('/allWeekly', [CollectorController::class, 'allWeekly'])->name('allWeekly');
         Route::get('/alloneTime', [CollectorController::class, 'allOne'])->name('allOne');
+        Route::get('/profile', [CollectorController::class, 'profile'])->name('profile');
+        Route::post('/profile', [CollectorController::class, 'collectAreas']);
     });
 });

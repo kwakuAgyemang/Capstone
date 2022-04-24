@@ -1,21 +1,27 @@
 @extends('layouts.app')
 @section('content')
 
+
+<style>
+    #appointment-form {
+        width: 450px;
+        margin: 0 auto;
+        padding: 30px 0;
+          font-size: 15px;
+    }
+
+</style>
 <div class="container">
     <div class="mt-5">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    Add Weekly Collection Date
-                </div>
 
-                <div class="panel-body">
-                    <h1></h1>
-                    <form action="{{route('user.weeklyappointments')}}" method="post">
+                <div class="panel-body" id="appointment-form">
+                    <h3>Add Weekly Collection Date</h3>
+                    <form action="{{route('user.weeklyappointments')}}" method="post" >
                         @csrf
                         <div class="form-group">
                             <label for="">Pick Day</label>
-                            <select name="day_of_week" id="" >
+                            <select class="form-select-lg mb-3 " name="day_of_week" id="" >
 
                                 <option value="Monday">Monday</option>
                                 <option value="Tuesday">Tuesday</option>
@@ -29,7 +35,7 @@
                         <label for="" class="mt-3">Please select a Collector</label>
                         <select class="form-select mt-1" name="collector_id" id="collectors">
                             @foreach ( $data as  $collector)
-                                <option value="{{$collector->id}}">{{$collector->fname}}  {{$collector->lname}}</option>
+                                <option value="{{$collector->collector->id}}">{{$collector->collector->fname}}  {{$collector->collector->lname}}</option>
                             @endforeach
 
                         </select>
@@ -49,7 +55,7 @@
 
                     </form>
                 </div>
-            </div>
+
         </div>
     </div>
 </div>

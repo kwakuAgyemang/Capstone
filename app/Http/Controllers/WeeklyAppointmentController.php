@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WeeklyAppointment;
+use App\Models\AreaCollection;
 use DB;
 
 class WeeklyAppointmentController extends Controller
 {
+    /**
+     *
+     */
     public function __construct()
     {
         $this->middleware(['auth']);
     }
+
+    /**
+     *
+     */
     public function index(){
-        $data = DB::table('collectors')->get();
+        $data = AreaCollection::with('collector')->where('area_id',auth()->user()->area)->get();
         return view('dashboard.user.weeklyappointments', [
             'data' => $data
         ]);
