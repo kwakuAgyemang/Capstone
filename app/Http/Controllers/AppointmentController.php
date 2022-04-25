@@ -44,6 +44,7 @@ class AppointmentController extends Controller
         ]);
         $day = Carbon::createFromFormat('Y-m-d', $request->date)->format('l');
 
+
         //store the appointment
         Appointments::create([
             'date' => $request->date,
@@ -54,6 +55,8 @@ class AppointmentController extends Controller
             'status' => 'PENDING',
             'Day_of_week' => $day
         ]);
+
+
 
         return redirect()->route('user.home');
     }

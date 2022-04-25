@@ -52,6 +52,38 @@ class WeeklyAppointmentController extends Controller
 
         ]);
 
+        $date = Carbon::now();
+        $date =  $date->toDateString();
+        $app = Appointments::where('date', $request->date)->with('user')->get();
+
+        $curl = curl_init();
+        foreach($app as $appointments){
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://sms.arkesel.com/api/v2/sms/send',
+            CURLOPT_HTTPHEADER => ['api-key: cE9QRUkdjsjdfjkdsj9kdiieieififiw='],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => http_build_query([
+                'sender' => 'AbobyaExpress',
+                'message' => 'Name: '.$appointments->user->name.'
+                              Landmark:  '.$appointments->landmark.'
+                              Phone Number:'.$appointments->collector->phone_num,
+                'recipients' => $appointments->collector->phone_num,
+            ]),
+        ]);
+    }
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
+
+
 
 
 

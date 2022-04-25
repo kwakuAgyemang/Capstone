@@ -33,10 +33,10 @@
                         <ul class="list-unstyled pricing-list margin-b-50">
                             <li class="pricing-list-item">Basic Features</li>
                             <li class="pricing-list-item">Collection at your doorstep</li>
-                            <li class="pricing-list-iem">Trash is disposed of safely at a dumpsite</li>
+                            <li class="pricing-list-item">Trash is disposed of safely at a dumpsite</li>
 
                         </ul>
-                        <a href="pricing.blade.php" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Choose</a>
+
                     </div>
                     <!-- End Pricing -->
                 </div>
@@ -52,7 +52,7 @@
                             <li class="pricing-list-item">Collection at your doorstep every week</li>
                             <li class="pricing-list-item">Trash is disposed of safely at a dumpsite</li>
                         </ul>
-                        <a href="pricing.blade.php" class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Choose</a>
+
                     </div>
                     <!-- End Pricing -->
                 </div>
