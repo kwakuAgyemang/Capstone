@@ -51,6 +51,9 @@ class WeeklyAppointmentController extends Controller
             'status' => 'PENDING',
 
         ]);
+        return redirect()->route('user.home');
+
+
 
         $date = Carbon::now();
         $date =  $date->toDateString();
@@ -87,7 +90,7 @@ class WeeklyAppointmentController extends Controller
 
 
 
-        return redirect()->route('user.home');
+
     }
 
     // public function getToday(){

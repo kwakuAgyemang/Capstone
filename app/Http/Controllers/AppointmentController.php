@@ -57,7 +57,7 @@ class AppointmentController extends Controller
         ]);
 
 
-
+        //redirect to the user's home page
         return redirect()->route('user.home');
     }
 
