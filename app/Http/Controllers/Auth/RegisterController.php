@@ -17,7 +17,9 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware(['guest']);
+        $this->middleware(['guest:collector']);
     }
+
 
     /**
      * Redirect to register page
@@ -51,6 +53,7 @@ class RegisterController extends Controller
             'area'      => 'required'
 
         ]);
+        //dd($request);
         //store the user
         User::create([
             'name' => $request->name,
@@ -60,11 +63,11 @@ class RegisterController extends Controller
             'area' => $request->area,
         ]);
         //sign in
-        auth()->attempt($request->only('email', 'password'));
+        //auth()->attempt($request->only('email', 'password'));
         //redirecting
         //$data = DB::table('users')->where('user_role', 0)->get();
 
-        return redirect()->route('dashboard.user.home');
+        return redirect()->route('user.login');
     }
 
     /**

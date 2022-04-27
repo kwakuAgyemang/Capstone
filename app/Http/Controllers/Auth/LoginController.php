@@ -13,7 +13,10 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware(['guest']);
+        $this->middleware(['guest:collector']);
     }
+
+
     public function index(){
 
         return view('auth.login');
