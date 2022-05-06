@@ -18,7 +18,6 @@ class CreateReportFormTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('collector_id');
             $table->string('report');
-            $table->timestamps();
         });
     }
 

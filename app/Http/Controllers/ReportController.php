@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Report;
-use App\Model\Collector;
+use App\Models\Report;
+use App\Models\Collector;
 use App\Models\AreaCollection;
 
 class ReportController extends Controller
@@ -17,16 +17,10 @@ class ReportController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function index(){
-        $collector = AreaCollection::with('collector')->where('area_id',auth()->user()->area)->get();;
-        return view('dashboard.user.report', [
-            'collector' => $collector
-        ]);
-    }
 
     public function store(Request $request){
+        //dd($request);
         $this->validate($request, [
-            'user_id'      => 'required',
             'collector_id' => 'required',
             'report'       => 'required'
         ]);

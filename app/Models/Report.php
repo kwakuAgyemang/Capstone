@@ -9,6 +9,7 @@ class Report extends Model
 {
     use HasFactory;
     protected $table = 'report_form';
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *

@@ -8,7 +8,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\WeeklyAppointmentController;
 use App\Http\Controllers\CollectorController;
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,12 +46,15 @@ Route::prefix('user')->name('user.')->group(function(){
         Route::post('/login', [LoginController::class, 'storeUser']);
     });
     Route::middleware(['auth', 'PreventBackHistory'])->group(function(){
-        Route::view('/home', 'dashboard.user.home')->name('home');
+        Route::get('/home', [DashboardController::class, 'index'])->name('home');
         Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointments');
         Route::post('/appointment', [AppointmentController::class, 'store']);
         Route::get('/weeklyappointment', [WeeklyAppointmentController::class, 'index'])->name('weeklyappointments');
         Route::post('/weeklyappointment', [WeeklyAppointmentController::class, 'store']);
         Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+        Route::post('/report', [ReportController::class, 'store'])->name('report');
+        Route::get('/profile', [UserController::class, 'index'])->name('profile');
+        Route::post('/profile', [UserController::class, 'update']);
     });
 });
 
