@@ -20,8 +20,6 @@ class CreateReportFormTable extends Migration
             $table->foreignId('collector_id');
             $table->string('report');
         });
-        DB::statement("INSERT INTO areas(areaName) values ('Spintex')");
-        DB::statement("INSERT INTO areas(areaName) values ('Achimota')");
     }
 
     /**
