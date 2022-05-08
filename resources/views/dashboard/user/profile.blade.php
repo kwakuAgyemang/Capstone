@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-7 col-md-10">
                   <h1 class="display-2 text-white">Hello {{auth()->user()->name}} </h1>
-                  <p class="text-white mt-0 mb-5">This is your profile page</p>
+                  <p class="text-white mt-0 mb-5">This is your profile page.</p>
 
                 </div>
               </div>
