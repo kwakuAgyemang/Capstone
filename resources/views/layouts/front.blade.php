@@ -8,7 +8,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
-    <link rel="shortcut icon" href="{{secure_asset('/storage/images/profile/AboboyaExpress-logos.jpeg' )}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{secure_asset('img/AboboyaExpress-logos.jpeg' )}}" type="image/x-icon" />
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
     <link href="{{secure_asset('vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
