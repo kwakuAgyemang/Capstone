@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateReportFormTable extends Migration
 {
@@ -19,6 +20,8 @@ class CreateReportFormTable extends Migration
             $table->foreignId('collector_id');
             $table->string('report');
         });
+        DB::statement("INSERT INTO areas(areaName) values ('Spintex')");
+        DB::statement("INSERT INTO areas(areaName) values ('Achimota')");
     }
 
     /**
