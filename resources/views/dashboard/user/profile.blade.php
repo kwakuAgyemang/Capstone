@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-<link rel="stylesheet" href="{{secure_asset('css/profile.css')}}">
+<link rel="stylesheet" href="{{asset('css/profile.css')}}">
 
 <body>
 

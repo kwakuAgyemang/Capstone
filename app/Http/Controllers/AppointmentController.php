@@ -53,7 +53,6 @@ class AppointmentController extends Controller
             'user_id' => $request->user_id,
             'landmark' => $request->landmark,
             'status' => 'PENDING',
-            'Day_of_week' => $day
         ]);
 
 

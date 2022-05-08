@@ -171,6 +171,7 @@ footer .form-control {
                         <fieldset class="form-group">
                             <select name="collector_id" class="form-select form-select-lg">
                                 @foreach ( $data as $d )
+                                    <option value="" >Select the collector you want to report</option>
                                     <option value="{{$d->collector->id}}">{{$d->collector->fname}} {{$d->collector->lname}} </option>
                                 @endforeach
 

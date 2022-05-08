@@ -22,7 +22,6 @@ class CreateAppointmentsTable extends Migration
             $table->string('ghanaPost');
             $table->string('landmark', 255);
             $table->string('status');
-            $table->string('regularity');
             $table->timestamps();
         });
     }

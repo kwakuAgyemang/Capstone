@@ -8,18 +8,18 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" />
-    <link rel="shortcut icon" href="{{secure_asset('img/AboboyaExpress-logos.jpeg' )}}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{asset('img/AboboyaExpress-logos.jpeg' )}}" type="image/x-icon" />
     <!-- GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-    <link href="{{secure_asset('vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{secure_asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('vendor/simple-line-icons/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
 
     <!-- PAGE LEVEL PLUGIN STYLES -->
-    <link href="{{secure_asset('css/animate.css')}}" rel="stylesheet">
-    <link href="{{secure_asset('vendor/swiper/css/swiper.min.css')}} " rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/animate.css')}}" rel="stylesheet">
+    <link href="{{asset('vendor/swiper/css/swiper.min.css')}} " rel="stylesheet" type="text/css"/>
 
     <!-- THEME STYLES -->
-    <link href="{{secure_asset('css/layout.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/layout.min.css')}}" rel="stylesheet" type="text/css"/>
     <title>AboboyaExpress</title>
 </head>
 <body>
@@ -108,24 +108,24 @@
 
 <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- CORE PLUGINS -->
-<script src="{{secure_asset('vendor/jquery.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/jquery-migrate.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
 <!-- PAGE LEVEL PLUGINS -->
-<script src="{{secure_asset('vendor/jquery.easing.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/jquery.easing.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/jquery.back-to-top.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/jquery.smooth-scroll.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/jquery.wow.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/swiper/js/swiper.jquery.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/masonry/jquery.masonry.pkgd.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('vendor/masonry/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
 
 <!-- PAGE LEVEL SCRIPTS -->
-<script src="{{secure_asset('js/layout.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('js/components/wow.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('js/components/swiper.min.js')}}" type="text/javascript"></script>
-<script src="{{secure_asset('js/components/masonry.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/layout.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/components/wow.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/components/swiper.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/components/masonry.min.js')}}" type="text/javascript"></script>
 
 </body>
 </html>

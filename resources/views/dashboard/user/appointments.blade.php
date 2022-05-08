@@ -41,7 +41,7 @@
 
 
                         <div class="form-group">
-                            <input type="text" name="house_number" class="form-control" id="" placeholder="Please enter your house number">
+                            <input type="number" name="house_number" class="form-control" id="" placeholder="Please enter your house number">
                         </div>
 
                         <div class="form-group">
