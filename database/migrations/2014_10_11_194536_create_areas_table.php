@@ -17,9 +17,6 @@ class CreateAreasTable extends Migration
             $table->id();
             $table->string('areaName');
         });
-
-        DB::statement("INSERT INTO areas(areaName) values ('Spintex')");
-        DB::statement("INSERT INTO areas(areaName) values ('Achimota')");
     }
 
     /**
