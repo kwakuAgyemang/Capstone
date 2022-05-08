@@ -11,7 +11,7 @@
       <div class="container-fluid">
         <!-- Brand -->
         <div class="container">
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="">User profile</a>
+
         <!-- User -->
 
       </div>
@@ -50,28 +50,28 @@
               </div>
             </div>
             <div class="card-body">
-              <form action="POST" action="route('user.profile')">
+              <form method="POST" action="{{route('user.profile')}}">
                 <h6 class="heading-small text-muted mb-4">User information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Name</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{auth()->user()->name}}">
+                        <input type="text" id="input-username" name="name" class="form-control form-control-alternative" placeholder="Username" value="{{auth()->user()->name}}">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="a@example.com" value="{{auth()->user()->email}}">
+                        <input type="email" id="input-email" name="email" class="form-control form-control-alternative" placeholder="a@example.com" value="{{auth()->user()->email}}">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="form-group focused">
-                        <label class="form-control-label" for="input-first-name">Name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="{{auth()->user()->phone_num}}">
+                        <label class="form-control-label" for="input-first-name">Phone number</label>
+                        <input type="text" id="" name="phone_num" class="form-control form-control-alternative" placeholder="First name" value="{{auth()->user()->phone_num}}">
                       </div>
                     </div>
 
@@ -96,7 +96,7 @@
                   </div>
 
                 </div>
-                <a href="#!" class="btn btn-secondary">Edit profile</a>
+                <button  type="submit" class="btn btn-secondary">Edit profile</a>
 
 
               </form>
