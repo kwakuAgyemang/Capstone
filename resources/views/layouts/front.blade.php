@@ -37,7 +37,7 @@
 
                     <!-- Logo -->
                     <div class="logo">
-                        <a class="logo-wrap" href="index.blade.php">
+                        <a class="logo-wrap" href="{{route('home')}}">
 
                             <img class="logo-img logo-img-active" src="img/AboboyaExpress-logos.jpeg" alt="Asentus Logo">
                         </a>
