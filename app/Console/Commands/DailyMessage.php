@@ -41,8 +41,7 @@ class DailyMessage extends Command
      */
     public function handle()
     {
-        Arkesel();
-        \Log::info('Working');
+        $this->Arkesel();
     }
 
     public function getOneTimeApp(){
@@ -59,8 +58,8 @@ class DailyMessage extends Command
 
 
     public function Arkesel(){
-        $app = getOneTimeApp();
-        $weeklyApp = getWeeklyApp();
+        $app = $this->getOneTimeApp();
+        $weeklyApp = $this->getWeeklyApp();
         foreach($app as $appointments){
 
 
@@ -81,6 +80,7 @@ class DailyMessage extends Command
                 'sender' => 'AbobyaExpress',
                 'message' => 'Name: '.$appointments->user->name.'
                               Landmark:  '.$appointments->landmark.'
+                              Area: '.$appointments->user->area.'
                               Phone Number:'.$appointments->collector->phone_num,
                 'recipients' => $appointments->collector->phone_num,
             ]),
@@ -109,6 +109,7 @@ class DailyMessage extends Command
                     'sender' => 'AbobyaExpress',
                     'message' => 'Name: '.$w->user->name.'
                                 Landmark:  '.$w->landmark.'
+                                Area: '.$w->user->area.'
                                 Phone Number:'.$w->collector->phone_num,
                     'recipients' => $w->collector->phone_num,
                 ]),
